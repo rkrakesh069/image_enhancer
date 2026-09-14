@@ -18,7 +18,7 @@ services:
       retries: 5
 
   backend:
-    build: ./backend                  # our own code -> build:, not image:
+    build: rkrakesh069/image-enhancer-backend:1.0.0                  # our own code -> build:, not image:
     container_name: image-enhancer-backend
     environment:
       - PORT=3000
@@ -38,7 +38,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    build: ./frontend
+    build: rkrakesh069/image-enhancer-frontend:1.0.0
     container_name: image-enhancer-frontend
     ports:
       - "8080:80"
