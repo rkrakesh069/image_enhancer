@@ -5,7 +5,7 @@
 # over 200MB to an image — completely unnecessary at RUNTIME, since sharp
 # ships prebuilt binaries once installed. Stage 1 does the heavy lifting;
 # Stage 2 ships only the finished result.
-
+#gh
 # ---------- Stage 1: builder ----------
 FROM node:20-slim AS builder
 
