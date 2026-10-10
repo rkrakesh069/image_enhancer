@@ -91,13 +91,32 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Deploy') {
             steps {
 
                 sshagent(['deploy-server-ssh']) {
 
                     sh '''
+                        set -eu
+
+                        echo "Checking deployment Compose file..."
+
+                        test -f deploy/compose.yml
+                        echo "Creating deployment directory..."
+
+                        ssh -o StrictHostKeyChecking=no \
+                            ubuntu@DEPLOY_PRIVATE_IP \
+                            "sudo mkdir -p /opt/image-enhancer &&
+                            sudo chown ubuntu:ubuntu /opt/image-enhancer"
+
+                        echo "Copying Compose file to deployment server..."
+
+                        scp -o StrictHostKeyChecking=no \
+                            deploy/compose.yml \
+                            ubuntu@DEPLOY_PRIVATE_IP:/opt/image-enhancer/compose.yml
+
+                        echo "Pulling images and deploying..."
                         ssh -o StrictHostKeyChecking=no \
                             ubuntu@172.31.2.203 \
                             "cd /opt/image-enhancer && \
