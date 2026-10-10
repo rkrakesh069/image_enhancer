@@ -54,6 +54,7 @@ docker compose up --build
 # Open http://localhost:8080
 ```
 
+
 See the companion PDF guide for the complete step-by-step walkthrough of every stage above, including the Docker Hub round-trip and real domain deployment.
 
                      LOCAL WINDOWS PC
