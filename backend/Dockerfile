@@ -33,7 +33,7 @@ WORKDIR /app
 # Only the finished node_modules (with sharp's compiled binary) and app code
 # are copied in — none of the compilers or build tools from Stage 1 exist here.
 COPY --from=builder /app /app
-
+RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
 ENV PORT=3000
 ENV UPLOAD_DIR=/app/uploads
 
