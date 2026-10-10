@@ -55,3 +55,63 @@ docker compose up --build
 ```
 
 See the companion PDF guide for the complete step-by-step walkthrough of every stage above, including the Docker Hub round-trip and real domain deployment.
+
+                     LOCAL WINDOWS PC
+                           |
+                           | git add
+                           | git commit
+                           | git push
+                           v
+                       GITHUB
+                           |
+                           | Webhook
+                           v
+                  +-------------------+
+                  |    JENKINS EC2    |
+                  |                   |
+                  | Checkout          |
+                  | Build Backend     |
+                  | Build Frontend    |
+                  | Docker Login      |
+                  | Push Docker Hub   |
+                  +---------+---------+
+                            |
+                            | docker push
+                            v
+                    +---------------+
+                    |   DOCKER HUB  |
+                    |               |
+                    | backend:12    |
+                    | frontend:12   |
+                    | backend:latest|
+                    | frontend:latest
+                    +-------+-------+
+                            |
+                            | SSH trigger
+                            v
+                  +--------------------+
+                  |    DEPLOY EC2      |
+                  |                    |
+                  | docker compose     |
+                  | pull               |
+                  | up -d              |
+                  +---------+----------+
+                            |
+             +--------------+--------------+
+             |              |              |
+             v              v              v
+        FRONTEND         BACKEND       POSTGRES
+          :8080            :3000
+             |               |
+             +-------+-------+
+                     |
+                enhancer-net
+
+Volumes:
+    enhanced-images
+          |
+          +---- /app/uploads
+
+    db-data
+          |
+          +---- PostgreSQL data
