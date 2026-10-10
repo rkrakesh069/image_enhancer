@@ -33,6 +33,7 @@ frontend (Nginx) ── /api/* ──▶ backend (Node.js + Express + sharp)
 
 ```
 image_enhancer/
+|__ Jenkinsfile
 ├── docker-compose.yml            # local development — all 3 services
 ├── docker-compose.prod.yml        # production override — adds HTTPS
 ├── backend/
@@ -59,7 +60,7 @@ See the companion PDF guide for the complete step-by-step walkthrough of every s
 
                      LOCAL WINDOWS PC
                            |
-                           | git add
+                           | git add .
                            | git commit
                            | git push
                            v

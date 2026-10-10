@@ -8,7 +8,7 @@ pipeline {
         IMAGE_TAG = "${BUILD_NUMBER}"
 
         DEPLOY_USER = "ubuntu"
-        DEPLOY_HOST = "DEPLOY_PRIVATE_IP"
+        DEPLOY_HOST = "172.31.2.203"
         DEPLOY_PATH = "/opt/image-enhancer"
     }
 
