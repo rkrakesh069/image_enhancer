@@ -106,7 +106,7 @@ pipeline {
                         echo "Creating deployment directory..."
 
                         ssh -o StrictHostKeyChecking=no \
-                            ubuntu@DEPLOY_PRIVATE_IP \
+                            ubuntu@172.31.2.203 \
                             "sudo mkdir -p /opt/image-enhancer &&
                             sudo chown ubuntu:ubuntu /opt/image-enhancer"
 
@@ -114,7 +114,7 @@ pipeline {
 
                         scp -o StrictHostKeyChecking=no \
                             deploy/compose.yml \
-                            ubuntu@DEPLOY_PRIVATE_IP:/opt/image-enhancer/compose.yml
+                            ubuntu@172.31.2.203:/opt/image-enhancer/compose.yml
 
                         echo "Pulling images and deploying..."
                         ssh -o StrictHostKeyChecking=no \
