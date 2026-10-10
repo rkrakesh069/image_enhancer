@@ -3,8 +3,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_BACKEND  = rkrakesh069/image-enhancer-backend
-        DOCKER_IMAGE_FRONTEND = rkrakesh069/image-enhancer-frontend
+        DOCKER_IMAGE_BACKEND  = 'rkrakesh069/image-enhancer-backend'
+        DOCKER_IMAGE_FRONTEND = 'rkrakesh069/image-enhancer-frontend'
         IMAGE_TAG = "${BUILD_NUMBER}"
 
         DEPLOY_USER = "ubuntu"
